@@ -1,0 +1,7 @@
+------------------------------ yearly revenue --------------------------------------------
+SELECT
+  DATETIME_TRUNC(kf_final_transaction.date, YEAR) AS year, -- to truncate a date of transaction to year
+  SUM(kf_final_transaction.price) AS revenue -- calculate revenue by summing up the prices in the final transaction table
+FROM rakamin-kf-analytics-423207.kimia_farma.kf_final_transaction
+GROUP BY DATETIME_TRUNC(kf_final_transaction.date, YEAR)
+ORDER BY year;
