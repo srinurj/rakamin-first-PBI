@@ -1,0 +1,10 @@
+---------------- top 10 total transaction by province branch ----------------------------------
+SELECT 
+  kf_kantor_cabang.provinsi,
+  COUNT(kf_final_transaction.transaction_id) as total_transaction
+FROM rakamin-kf-analytics-423207.kimia_farma.kf_kantor_cabang
+LEFT JOIN rakamin-kf-analytics-423207.kimia_farma.kf_final_transaction
+ON kf_kantor_cabang.branch_id = kf_final_transaction.branch_id
+GROUP BY kf_kantor_cabang.provinsi
+ORDER BY total_transaction DESC
+LIMIT 10;
